@@ -19,6 +19,8 @@ def lambda_handler(event, context):
         'body': selenium.driver().title
     }
 
+
+
     return result
   finally:
     if selenium:

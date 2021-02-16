@@ -27,6 +27,7 @@ zip -r $CHROME_ZIP $CHROME_TOP
 SELENIUM_TOP="./selenium"
 SELENIUM_DIR=$SELENIUM_TOP"/python"
 SELENIUM_ZIP="selenium.zip"
+CRED_FILE="./credentials/secret.json"
 
 rm -rf $SELENIUM_TOP
 rm -rf $SELENIUM_ZIP
@@ -34,6 +35,8 @@ mkdir -p $SELENIUM_DIR
 
 pip install --requirement ./requirements.txt -t $SELENIUM_DIR
 # pip install selenium -t $SELENIUM_DIR
+
+cp $CRED_FILE $SELENIUM_DIR
 
 cd $SELENIUM_TOP
 

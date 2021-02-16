@@ -1,5 +1,5 @@
 
-import os
+from conf.config import Config
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
@@ -26,13 +26,9 @@ class SeleniumUtil:
     self.__build_driver(options)
 
   def __build_driver(self, options):
+    config = Config()
 
-    # lambda環境かローカル環境かでheadless-chromeの配置先を変更
-    chrome_base_path = '/workspaces/selenium-lambda'
-    if os.getenv('AWS_LAMBDA_RUNTIME_API', default=False):
-      chrome_base_path = '/opt'
-
-    options.binary_location = f"{chrome_base_path}/headless/python/bin/headless-chromium"
+    options.binary_location = f"{config.CHROME_BASE_PATH}/headless/python/bin/headless-chromium"
     options.add_argument('--headless')
     options.add_argument('--no-sandbox')
     options.add_argument("--single-process")
@@ -56,7 +52,7 @@ class SeleniumUtil:
     # })
 
     self._driver = webdriver.Chrome(
-        executable_path=f"{chrome_base_path}/headless/python/bin/chromedriver",
+        executable_path=f"{config.CHROME_BASE_PATH}/headless/python/bin/chromedriver",
         options=options,
         desired_capabilities=capabilities,
     )

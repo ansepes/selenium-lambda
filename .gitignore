@@ -139,3 +139,4 @@ cython_debug/
 *.zip
 selenium/*
 headless/*
+credentials/*.json
