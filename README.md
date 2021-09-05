@@ -8,3 +8,6 @@
     - 手動実行用：.devcontainer/devcontainer.json
 - GoogleSpreadsheetを使用する場合
     - credentials/secret.jsonを配置する
+
+## Lambda注意
+- ランタイムはPython 3.7のみ対応
